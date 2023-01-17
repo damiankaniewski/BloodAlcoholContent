@@ -40,13 +40,20 @@ namespace KalkulatorTrzezwosci
             wiek = int.Parse(txtWiek.Text);
             czasPicia = float.Parse(txtCzasPicia.Text);
 
-            float wspolczynnik = calculate.CalculateFactor(jedzenie, spalanie, wiek, wzrost);
-            float gramy = calculate.CalclateGrams(mocnyAlkohol, wino, piwo);
-            float bac = calculate.CalculateBac(gramy, waga*1000, plec);
-            float final = calculate.CalculateFinal(bac, czasPicia, wspolczynnik);
+            if (wzrost == 0 || waga == 0 || wiek == 0 || czasPicia == 0 || (radioButtonM.Checked == false && radioButtonK.Checked == false) || (radioButtonZle.Checked == false && radioButtonNormalnie.Checked == false && radioButtonDobrze.Checked == false) || (radioButtonMalo.Checked == false && radioButtonSrednio.Checked == false && radioButtonDuzo.Checked == false))
+            {
+                labelWynik.Text = "B³¹d! Podaj poprawne dane!";
+            }
+            else
+            {
+                float wspolczynnik = calculate.CalculateFactor(jedzenie, spalanie, wiek, wzrost);
+                float gramy = calculate.CalclateGrams(mocnyAlkohol, wino, piwo);
+                float bac = calculate.CalculateBac(gramy, waga * 1000, plec);
+                float final = calculate.CalculateFinal(bac, czasPicia, wspolczynnik);
 
-            string tekst = "Wynik:" + final.ToString("0.##") + "‰";
-            labelWynik.Text = tekst;
+                string tekst = "Wynik: " + final.ToString("0.##") + "‰";
+                labelWynik.Text = tekst;
+            }
         }
     
         private void numericMocnyAlkohol_ValueChanged(object sender, EventArgs e)
