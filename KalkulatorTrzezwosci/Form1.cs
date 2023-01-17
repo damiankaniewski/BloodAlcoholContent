@@ -43,6 +43,7 @@ namespace KalkulatorTrzezwosci
             if (wzrost == 0 || waga == 0 || wiek == 0 || czasPicia == 0 || (radioButtonM.Checked == false && radioButtonK.Checked == false) || (radioButtonZle.Checked == false && radioButtonNormalnie.Checked == false && radioButtonDobrze.Checked == false) || (radioButtonMalo.Checked == false && radioButtonSrednio.Checked == false && radioButtonDuzo.Checked == false))
             {
                 labelWynik.Text = "B³¹d! Podaj poprawne dane!";
+
             }
             else
             {
